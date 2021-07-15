@@ -25,9 +25,10 @@ function(req,res){
         const phone = req.body.phone;
         const username = req.body.username;
         const password = req.body.password;
+        const userType = req.body.userType;
 
         bcryptjs.hash(password, 10, function(err, hash){
-            const data = new User({firstname:firstname, lastname : lastname, email : email, phone : phone, username : username, password : hash})
+            const data = new User({firstname:firstname, lastname : lastname, email : email, phone : phone, username : username, password : hash, userType: userType})
             data.save()
 
             .then(function(result){

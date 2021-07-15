@@ -24,23 +24,23 @@ describe("User Schema Test", () =>{
    //insert testing
     it('Add user', () => {
         const user ={
-            'firstname' : 'Prajwol',
+            'firstname' : 'Sirish',
             'lastname' : "Khatri",
             'email' : 'abcd@gmail.com',
             'phone' : '987653423',
-            'username': 'Prajwol123',
+            'username': 'Sirish123',
             'password' : "1212",
         } ;
         return User.create(user)
         .then((res) => {
             id = res._id
-            expect(res.firstname).toEqual('Prajwol');
+            expect(res.firstname).toEqual('Sirish');
         })
     });
 
     it('login user', async () => {
         const data ={
-                     'username' : 'Prajwol123',
+                     'username' : 'Sirish123',
                      'password' : '1212'
                 }
         return User.findOne({data});
