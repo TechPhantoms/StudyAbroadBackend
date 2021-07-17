@@ -31,4 +31,25 @@ describe("News Schema Test", () =>{
         expect(res.NewsTitle).toEqual('University');
     })
 })
+
+//news update testing
+it('Update News', async() => {
+    return News.findOneAndUpdate({_id : id},
+        {$set : {NewsTitle: 'Country'}},
+        {
+            new:true
+        })
+        .then((update) =>{
+            expect(update.NewsTitle).toEqual('Country')
+        })
+})
+
+//news delete testing
+it('delete testing', async() =>{
+    const status = await News.deleteOne({_id : id})
+    expect(status.ok).toBe(1);
+})
+
+
+
 })

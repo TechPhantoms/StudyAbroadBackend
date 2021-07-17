@@ -52,6 +52,17 @@ router.put('/news/update/:id', function(req,res){
     })
 })
 
+//Delete
+router.delete('/news/delete/:id', function(req,res){
+    const id = req.params.id;
+    News.deleteOne({_id : id})
+    .then(function(result){
+        res.status(200).json({message : "Deleted!!"})
+    })
+    .catch(function(e){
+        res.status(500).json({error : e})
+    })
+})
 
 router.get('/news/showall', function(req,res){
     News.find()
