@@ -13,7 +13,7 @@ function(req,res, next){
     
     if(req.file == undefined)
     {
-        res.status(401).json({"success":false,"message":"Invalid File"})
+        res.status(401).json({success:false, message:"Invalid File"})
     }
     else
     {
