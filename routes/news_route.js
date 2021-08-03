@@ -75,6 +75,15 @@ router.get('/news/showall', function(req,res){
     })
 })
 
-
+router.get('/news/single/:id', function(req,res){
+    const id = req.params.id;
+    News.findOne({_id : id})
+    .then(function(data){
+        res.status(200).json(data)
+    })
+    .catch(function(e){
+        res.status(500).json({error:e})
+    })
+})
 
 module.exports = router;
