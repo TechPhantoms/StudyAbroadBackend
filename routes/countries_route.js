@@ -38,7 +38,7 @@ router.post('/countries/insert', upload.single('countryImage','countryPicture'),
         })
         CountriesData.save()
         .then(function(result){
-            res.status(201).json({success: true, "message" : "Countries Inserted!!"})
+            res.status(201).json({success: true, message : "Countries Inserted!!"})
         })
         .catch(function(e){
             res.status(500).json({error : e})
