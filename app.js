@@ -7,6 +7,7 @@ const News_route = require('./routes/news_route')
 const Countries_route = require('./routes/countries_route')
 const Universities_route = require('./routes/universities_route')
 const Comment_route = require('./routes/comment_route')
+const MockTest = require('./routes/mocktest_route')
 const { static } = require('express');
 
 
@@ -20,6 +21,7 @@ app.use(News_route);
 app.use(Countries_route);
 app.use(Universities_route);
 app.use(Comment_route);
+app.use(MockTest);
 
 
 
