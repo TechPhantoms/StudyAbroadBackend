@@ -10,6 +10,30 @@ const News = mongoose.model('News',{
     NewsDetails: {
         type: String
     },
+    title1:{
+        type: String
+    },
+    content1: {
+        type: String
+    },
+    title2:{
+        type: String
+    },
+    content2: {
+        type: String
+    },
+    title3:{
+        type: String
+    },
+    content3: {
+        type: String
+    },
+    title4:{
+        type: String
+    },
+    content4: {
+        type: String
+    },
 
 })
 

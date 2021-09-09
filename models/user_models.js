@@ -26,6 +26,11 @@ const User = mongoose.model('User', {
         type:String,
         required: true
     },
+    userImage:{
+        type:String,
+    },
+    resetToken: String,
+    expireToken: Date,
     userType : {
         type : String,
         enum : ['Admin', 'User']

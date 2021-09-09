@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router()
 const News = require('../models/news_model')
 const upload = require('../middleware/upload');
+const { verifyAdmin} = require('../middleware/auth')
 
 router.post('/news/insert',upload.single('Newsimage'),
 function(req,res, next){
@@ -10,6 +11,14 @@ function(req,res, next){
     const Newsimage = req.file.path;
     const NewsTitle = req.body.NewsTitle;
     const NewsDetails = req.body.NewsDetails;
+    const title1 = req.body.title1;
+    const content1 = req.body.content1;
+    const title2 = req.body.title2;
+    const content2 = req.body.content2;
+    const title3 = req.body.title3;
+    const content3 = req.body.content3;
+    const title4 = req.body.title4;
+    const content4 = req.body.content4;
     
     if(req.file == undefined)
     {
@@ -17,7 +26,19 @@ function(req,res, next){
     }
     else
     {
-        const Newsdata = new News({ Newsimage : Newsimage , NewsTitle: NewsTitle, NewsDetails: NewsDetails})
+        const Newsdata = new News({ 
+            Newsimage : Newsimage , 
+            NewsTitle: NewsTitle, 
+            NewsDetails: NewsDetails,
+            title1: title1,
+            content1:content1,
+            title2: title2,
+            content2:content2,
+            title3: title3,
+            content3:content3,
+            title4: title4,
+            content4:content4,
+        })
         Newsdata.save()
 
     .then(function(result){
@@ -32,7 +53,7 @@ function(req,res, next){
 
 //Update
 // id - updated data from user
-router.put('/news/update/:id', function(req,res){
+router.put('/news/update/:id',verifyAdmin,function(req,res){
     // const dimage = req.body.dimage;
     const NewsTitle = req.body.NewsTitle;
     const NewsDetails = req.body.NewsDetails;
@@ -53,7 +74,7 @@ router.put('/news/update/:id', function(req,res){
 })
 
 //Delete
-router.delete('/news/delete/:id', function(req,res){
+router.delete('/news/delete/:id',verifyAdmin,function(req,res){
     const id = req.params.id;
     News.deleteOne({_id : id})
     .then(function(result){
@@ -64,7 +85,7 @@ router.delete('/news/delete/:id', function(req,res){
     })
 })
 
-router.get('/news/showall', function(req,res){
+router.get('/news/showall',function(req,res){
     News.find()
     .then(function(data){
      
